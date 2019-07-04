@@ -2,7 +2,10 @@
 <html lang="es">
 <head>
    
+<<<<<<< HEAD
   <base href="http://192.168.100.90/">
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   <base href="http://weonmart.test/">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta charset="utf-8">
@@ -22,9 +25,15 @@
      /* color: #FD5001;*/
       background-color: #FF6A00;
     }
+<<<<<<< HEAD
     /*.logo {
       margin-top: 70px;
     }*/
+=======
+    .logo {
+      margin-top: 70px;
+    }
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   </style>
 </head>
 

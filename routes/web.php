@@ -7,6 +7,15 @@ Route::prefix('admin')->group(function() {
 	/*Admin Dashbord*/
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+<<<<<<< HEAD
+=======
+//});
+
+//Route::prefix('admin')->group(function() {
+
+	Route::get('/role', 'RoleController@index');
+	Route::get('/role/select', 'RoleController@select');
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 
 
 	Route::get('/user', 'UserController@index');
@@ -17,6 +26,17 @@ Route::prefix('admin')->group(function() {
 	Route::put('/user/desactivar/{id}', 'UserController@desactivate');
 	Route::delete('/user/eliminar/{id}', 'UserController@destroy');
 
+<<<<<<< HEAD
+=======
+	Route::get('/higroupe', 'HigroupeController@index');
+	Route::get('/higroupe/select', 'HigroupeController@select');
+	Route::post('/higroupe/registrar', 'HigroupeController@store');
+	Route::put('/higroupe/actualizar/{id}', 'HigroupeController@update');
+	Route::put('/higroupe/activar/{id}', 'HigroupeController@activate');
+	Route::put('/higroupe/desactivar/{id}', 'HigroupeController@desactivate');
+	Route::delete('/higroupe/eliminar/{id}', 'HigroupeController@destroy');
+
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 	Route::get('/groupe', 'GroupeController@index');
 	Route::get('/groupe/select', 'GroupeController@select');
 	Route::post('/groupe/registrar', 'GroupeController@store');
@@ -59,6 +79,7 @@ Route::prefix('admin')->group(function() {
 	Route::delete('/category/eliminar/{id}', 'CategoryController@destroy');
 
 	Route::get('/product/{empresa_id}', 'ProductController@index');
+<<<<<<< HEAD
 	Route::get('/product/show/{empresa_id}/{p_id}', 'ProductController@show');
 	Route::get('/product/detail/{p_id}', 'ProductController@detail');
 	Route::get('/product/images/{p_id}', 'ProductController@imagesProduct');
@@ -66,6 +87,10 @@ Route::prefix('admin')->group(function() {
 	Route::get('/product/colores/{p_id}', 'ProductController@coloresProduct');
 	Route::get('/product/select/{empresa_id}', 'ProductController@select');
 	Route::post('/product/registrar/{emp_id}', 'ProductController@store');
+=======
+	Route::get('/product/select/{empresa_id}', 'ProductController@select');
+	Route::post('/product/registrar/{empresa_id}', 'ProductController@store');
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 	Route::put('/product/actualizar/{id}', 'ProductController@update');
 	Route::put('/product/activar/{id}', 'ProductController@activate');
 	Route::put('/product/desactivar/{id}', 'ProductController@desactivate');
@@ -82,7 +107,10 @@ Route::get('/mayorista','IndexController@selectMayorista');
 Route::get('/minorista','IndexController@selectMinorista');
 Route::get('search','IndexController@selectMinorista');
 Route::get('/{sl}/{slug}','MainController@index')->name('empresa_slug');
+<<<<<<< HEAD
 Route::get('/{sl}/{slug}/profile','MainController@profile')->name('profileEmpresa');
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 Route::get('/{sl}','IndexController@select')->name('groupe_slug');
 
 //this part is for the cart
@@ -91,8 +119,13 @@ Route::get('/{sl}/{slug}/cart', 'CartController@index')->name('cart.index');
 Route::post('/{sl}/{slug}/cart', 'CartController@addToCart');
 Route::get('/{sl}/{slug}/cart/checkout', 'MercadoPagoController@createPayment');
 Route::post('/{sl}/{slug}/cart/update', 'CartController@updateItem');
+<<<<<<< HEAD
 Route::post('/{sl}/{slug}/cart/delete', 'CartController@deleteItem')*/;
 
+=======
+Route::post('/{sl}/{slug}/cart/delete', 'CartController@deleteItem');
+*/
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 Route::get('/{sl}/{slg}','MainController@index');
 Route::get('/{sl}/{slg}/{slug}','MainController@select')->name('category_slug');
 Route::get('/{sl}/{slg}/{slug}/{slugProd}','MainController@show')->name('product_slug');
@@ -100,6 +133,7 @@ Route::get('/{sl}/{slg}/{slug}/{slugProd}','MainController@show')->name('product
 
 Route::get('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
+<<<<<<< HEAD
 
 
 
@@ -114,6 +148,8 @@ Route::get('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 
 
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 // if there is no post, 404
 //if (!$post) return abort(404);
 

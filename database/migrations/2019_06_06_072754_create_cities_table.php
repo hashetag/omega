@@ -33,8 +33,35 @@ class CreateCitiesTable extends Migration
         DB::table('cities')->insert(array('city' => 'Ushuaia', 'state' => 'Tierra del Fuego', 'zipcode' => 'V9410', 'latitud' => '-54.801944', 'longitud' => '-68.303056', 'country' => 'Argentina'));
         
 
+<<<<<<< HEAD
         Schema::create('groupes', function (Blueprint $table) {
             $table->bigIncrements('id');
+=======
+        Schema::create('higroupes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->comment('Super Categoria de Empresa');
+            $table->string('description')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('slug')->nullable();
+            $table->boolean('status')->default(1);
+            $table->timestamps();
+        });
+
+        DB::table('higroupes')->insert(array('name' => 'Alimentacion', 'description' => 'Food'));
+        DB::table('higroupes')->insert(array('name' => 'Deportes', 'description' => 'Sport'));
+        DB::table('higroupes')->insert(array('name' => 'Shopping', 'description' => 'Shopping'));
+        DB::table('higroupes')->insert(array('name' => 'Tecnologia', 'description' => 'Tecnologia'));
+        DB::table('higroupes')->insert(array('name' => 'Casa y Jardin', 'description' => 'Casa y Jardin'));
+        DB::table('higroupes')->insert(array('name' => 'Mascotas', 'description' => 'Pets'));
+        DB::table('higroupes')->insert(array('name' => 'Aprendizaje', 'description' => 'Learning'));
+        DB::table('higroupes')->insert(array('name' => 'Vehiculo y Repuesto', 'description' => 'Vehiculo y Repuesto'));
+        DB::table('higroupes')->insert(array('name' => 'Otros', 'description' => 'Otros'));
+        
+        
+        Schema::create('groupes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('higroup_id');
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
             $table->string('name')->comment('Categoria de Empresa');
             $table->string('description')->nullable();
             $table->string('logo')->nullable();
@@ -43,6 +70,7 @@ class CreateCitiesTable extends Migration
             $table->boolean('status')->default(1);
 
             $table->timestamps();
+<<<<<<< HEAD
         });
 
         DB::table('groupes')->insert(array('name' => 'Carnicería y Pollería', 'slug' => 'carniceria'));
@@ -57,6 +85,23 @@ class CreateCitiesTable extends Migration
         DB::table('groupes')->insert(array('name' => 'Zapatería', 'slug' => 'zapateria'));
         DB::table('groupes')->insert(array('name' => 'Electrodomestico', 'slug' => 'electrodomestico'));
         DB::table('groupes')->insert(array('name' => 'Electronica', 'slug' => 'electronica'));
+=======
+            $table->foreign('higroup_id')->references('id')->on('higroupes');
+        });
+
+        DB::table('groupes')->insert(array('higroup_id' => '1', 'name' => 'Carnicería y Pollería', 'slug' => 'carniceria'));
+        DB::table('groupes')->insert(array('higroup_id' => '1', 'name' => 'Pescaderia', 'slug' => 'carniceria'));
+        DB::table('groupes')->insert(array('higroup_id' => '1', 'name' => 'Verduleria', 'slug' => 'verduleria'));
+        DB::table('groupes')->insert(array('higroup_id' => '1', 'name' => 'Almacen Y Bebidas', 'slug' => 'almacen'));
+        DB::table('groupes')->insert(array('higroup_id' => '1', 'name' => 'Vinoteca', 'slug' => 'vinoteca'));
+        DB::table('groupes')->insert(array('higroup_id' => '6', 'name' => 'Tienda de Mascota', 'slug' => 'mascota'));
+        DB::table('groupes')->insert(array('higroup_id' => '7', 'name' => 'Librería', 'slug' => 'libreria'));
+        DB::table('groupes')->insert(array('higroup_id' => '3', 'name' => 'Perfumería', 'slug' => 'Perfumeria'));
+        DB::table('groupes')->insert(array('higroup_id' => '3', 'name' => 'Tienda de Ropa', 'slug' => 'ropa'));
+        DB::table('groupes')->insert(array('higroup_id' => '3', 'name' => 'Zapatería', 'slug' => 'zapateria'));
+        DB::table('groupes')->insert(array('higroup_id' => '5', 'name' => 'Electrodomestico', 'slug' => 'electrodomestico'));
+        DB::table('groupes')->insert(array('higroup_id' => '4', 'name' => 'Electronica', 'slug' => 'electronica'));
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 
         Schema::create('types', function (Blueprint $table) {
           $table->bigIncrements('id');
@@ -79,6 +124,10 @@ class CreateCitiesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('cities');
+<<<<<<< HEAD
+=======
+        Schema::dropIfExists('higroupes');
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         Schema::dropIfExists('groupes');
         Schema::dropIfExists('types');
     }

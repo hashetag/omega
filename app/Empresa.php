@@ -2,6 +2,10 @@
 
 namespace App;
 
+<<<<<<< HEAD
+=======
+use App\Role;
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 use App\City;
 use App\Groupe;
 use App\Type;
@@ -21,7 +25,11 @@ class Empresa extends Authenticatable
     //protected $table = 'empresas';
 
     protected $fillable = [
+<<<<<<< HEAD
         'isAdmin', 'name', 'email', 'password', 'groupe_id', 'city_id', 'type_id', 'cuit', 'avatar', 'phone', 'address', 'openhours', 'openhours_2', 'minimum', 'latitud','longitud', 'slug', 'website',
+=======
+        'role_id', 'name', 'email', 'password', 'groupe_id', 'city_id', 'type_id', 'cuit', 'avatar', 'phone', 'address', 'openhours', 'minimum', 'latitud','longitud', 'slug',
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     ];
 
    
@@ -34,12 +42,25 @@ class Empresa extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+<<<<<<< HEAD
   
   public static function navigation()
   {
     return auth()->check() ? auth()->empresa()->role->name : 'guest' ;
   }
 
+=======
+    
+    public static function navigation()
+    {
+        return auth()->check() ? auth()->empresa()->role->name : 'guest' ;
+    }
+
+    public function roles()
+    {
+      return $this->belongsTo(Role::class);
+    }
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 
     public function groupes()
   {

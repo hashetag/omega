@@ -9,7 +9,11 @@
             <li class="active nav-item">
               <a href="#" role="tab" data-toggle="tab" class="nav-link">Todo 
                 <span class="badge badge-pill badge-secondary">
+<<<<<<< HEAD
                   <?php $empQty = DB::table('empresas')->where('isAdmin', 0)->where('status', 1)->count(); ?>
+=======
+                  <?php $empQty = DB::table('empresas')->where('status', 1)->count(); ?>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                   {{ $empQty }}
                 </span>
             </a>
@@ -18,7 +22,11 @@
               <a href="{{ url('/fabrica')}}"  class="nav-link">
                 <b> Fabrica </b>
                 <span class="badge badge-pill badge-warning">
+<<<<<<< HEAD
                   <?php $fabrica = DB::table('empresas')->where('isAdmin', 0)->where('type_id', 1)->where('status', 1)->count(); ?>
+=======
+                  <?php $fabrica = DB::table('empresas')->where('type_id', 1)->where('status', 1)->count(); ?>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                   {{ $fabrica }}
                 </span>
               </a>
@@ -27,7 +35,11 @@
               <a href="{{ url('/mayorista')}}"  class="nav-link">
                 <b> Mayorista </b>
                 <span class="badge badge-pill badge-warning">
+<<<<<<< HEAD
                   <?php $mayorista = DB::table('empresas')->where('isAdmin', 0)->where('type_id', 2)->where('status', 1)->count(); ?>
+=======
+                  <?php $mayorista = DB::table('empresas')->where('type_id', 2)->where('status', 1)->count(); ?>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                   {{ $mayorista }}
                 </span>
               </a>
@@ -36,7 +48,11 @@
               <a href="{{ url('/minorista')}}"  class="nav-link">
                 <b> Minorista </b>
                 <span class="badge badge-pill badge-warning">
+<<<<<<< HEAD
                   <?php $minorista = DB::table('empresas')->where('isAdmin', 0)->where('type_id', 3)->where('status', 1)->count(); ?>
+=======
+                  <?php $minorista = DB::table('empresas')->where('type_id', 3)->where('status', 1)->count(); ?>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                   {{ $minorista }}
                 </span>
               </a>
@@ -103,8 +119,13 @@
                         </div>
                         <div class="col-md-3 text-right  price-box">
                           <div style="clear: both;margin-top: 50px; "></div>
+<<<<<<< HEAD
                           <a class="btn btn-outline-warning " href="{{ url($emp->slug.'/profile')}}">
                             Ver Perfil
+=======
+                          <a class="btn btn-outline-warning " href="{{ url($emp->slug)}}">
+                            Contactar
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                           </a>
                           <a class="btn btn-warning " href="{{ url($emp->slug)}}">
                             Ver productos

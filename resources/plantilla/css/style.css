@@ -1227,7 +1227,11 @@ pre {
   background-image: none;
   background-clip: padding-box;
   border: 1px solid #c2cfd6;
+<<<<<<< HEAD
   border-radius: 5px;
+=======
+  border-radius: 0;
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
   .form-control::-ms-expand {
     background-color: transparent;
@@ -1541,7 +1545,10 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
       -ms-user-select: none;
           user-select: none;
   border: 1px solid transparent;
+<<<<<<< HEAD
   border-radius: 5px;
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25;
@@ -7641,12 +7648,20 @@ base-chart.chart {
   border-bottom: 1px solid #c2cfd6; }
   .app-header.navbar .navbar-brand {
     display: inline-block;
+<<<<<<< HEAD
     width: 185px;
+=======
+    width: 155px;
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     height: 55px;
     padding: 0.5rem 1rem;
     margin-right: 0;
     background-color: #fff;
+<<<<<<< HEAD
     background-image: url("../classified/img/logo.png");
+=======
+    background-image: url("../img/logo.png");
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 70px auto;

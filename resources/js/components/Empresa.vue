@@ -38,13 +38,20 @@
                 <th>Telefono</th>
                 <th>Direccion</th>
                 <th>Horario</th>
+<<<<<<< HEAD
                 <th>Horario 2</th>
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 <th>Compra Minima</th>
                 <th>Tipo </th>
                 <th>Ciudad</th>
                 <th>Latitud</th>
                 <th>Longitud</th>
+<<<<<<< HEAD
                 <th>website</th>
+=======
+                <th>URL</th>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 <th>Estado</th>
                 <th>Eliminar</th>
               </tr>
@@ -74,13 +81,20 @@
                 <td>{{empresa.phone}}</td>
                 <td>{{empresa.address}}</td>
                 <td>{{empresa.openhours}}</td>
+<<<<<<< HEAD
                 <td>{{empresa.openhours_2}}</td>
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 <td>{{empresa.minimum}}</td>
                 <td>{{empresa.type}}</td>
                 <td>{{empresa.city}}</td>
                 <td>{{empresa.latitud}}</td>
                 <td>{{empresa.longitud}}</td>
+<<<<<<< HEAD
                 <td>{{empresa.website}}</td>
+=======
+                <td>{{empresa.slug}}</td>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 <td>
                   <div v-if="empresa.status">
                     <span class="badge badge-success">Activado</span>
@@ -184,12 +198,15 @@
                 </div>
               </div>
               <div class="form-group row">
+<<<<<<< HEAD
                 <label class="col-md-3 form-control-label" for="text-input">Horario 2</label>
                 <div class="col-md-9">
                   <input type="text" v-model="openhours_2" class="form-control" placeholder="Horario 2">
                 </div>
               </div>
               <div class="form-group row">
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 <label class="col-md-3 form-control-label" for="text-input">Compra Minima</label>
                 <div class="col-md-9">
                   <input type="text" v-model="minimum" class="form-control" placeholder="Compra Minima">
@@ -214,12 +231,15 @@
                 </div>
               </div>
               <div class="form-group row">
+<<<<<<< HEAD
                 <label class="col-md-3 form-control-label" for="text-input">Website</label>
                 <div class="col-md-9">
                   <input type="text" v-model="website" class="form-control" placeholder="Website">
                 </div>
               </div>
               <div class="form-group row">
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 <label class="col-md-3 form-control-label" for="text-input">Latitud</label>
                 <div class="col-md-9">
                   <input type="text" v-model="latitud" class="form-control" placeholder="Latitud">
@@ -267,8 +287,11 @@
         phone :'',
         address :'',
         openhours :'',
+<<<<<<< HEAD
         openhours_2 :'',
         website :'',
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         minimum :0,
         latitud :0,
         longitud :0,
@@ -413,9 +436,13 @@
           'phone' :this.phone,
           'address' :this.address,
           'openhours' :this.openhours,
+<<<<<<< HEAD
           'openhours_2' :this.openhours_2,
           'minimum' :this.minimum,
           'website' :this.website
+=======
+          'minimum' :this.minimum,
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
           'latitud' :this.latitud,
           'longitud' :this.longitud
         }).then(function (response){
@@ -446,9 +473,13 @@
           'phone' :this.phone,
           'address' :this.address,
           'openhours' :this.openhours,
+<<<<<<< HEAD
           'openhours_2' :this.openhours_2,
           'minimum' :this.minimum,
           'website' :this.website,
+=======
+          'minimum' :this.minimum,
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
           'latitud' :this.latitud,
           'longitud' :this.longitud
         }).then(function (response){
@@ -463,7 +494,11 @@
         this.errorEmpresa = 0;
         this.errorMostrarMsjEmpresa = [];
 
+<<<<<<< HEAD
         
+=======
+        //if (this.role_id==0) this.errorMostrarMsjEmpresa.push("Debe seleccionar un role para el usuario.");
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         if (!this.name) this.errorMostrarMsjEmpresa.push("El nombre de la empresa no puede estar vacío.");
         if (!this.email) this.errorMostrarMsjEmpresa.push("El email de la empresa  no puede estar vacío.");
         if (!this.password) this.errorMostrarMsjEmpresa.push("El password de la empresa no puede estar vacío.");
@@ -588,8 +623,11 @@
         this.phone = '';
         this.address = '';
         this.openhours = '';
+<<<<<<< HEAD
         this.openhours_2 = '';
         this.website = '';
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         this.minimum = 0;
         this.latitud = 0;
         this.longitud = 0;
@@ -616,8 +654,11 @@
                 this.phone       = '';
                 this.address     = '';
                 this.openhours   = '';
+<<<<<<< HEAD
                 this.openhours_2 = '';
                 this.website     = '';
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 this.minimum     = 0;
                 this.latitud     = 0;
                 this.longitud    = 0;
@@ -639,8 +680,11 @@
                 this.phone       = data['phone'];
                 this.address     = data['address'];
                 this.openhours   = data['openhours'];
+<<<<<<< HEAD
                 this.openhours_2 = data['openhours_2'];
                 this.website     = data['website'];
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 this.minimum     = data['minimum'];
                 this.latitud     = data['latitud'];
                 this.longitud    = data['longitud'];

@@ -13,7 +13,11 @@
                 <span class="count">
                   &nbsp;
                   <?php 
+<<<<<<< HEAD
                     $emps = DB::table('empresas')->where('isAdmin', 0)->where('groupe_id', $groupe->id)->count();
+=======
+                    $emps = DB::table('empresas')->where('groupe_id', $groupe->id)->count();
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                     echo $emps;
                   ?>
                 </span>

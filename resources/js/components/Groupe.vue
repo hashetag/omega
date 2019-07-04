@@ -30,6 +30,10 @@
             <thead>
               <tr>
                 <th>Opciones</th>
+<<<<<<< HEAD
+=======
+                <th>SuperCategoria</th>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 <th>Categoria Empresa</th>
                 <th>Descripción</th>
                 <th>Logo</th>
@@ -56,6 +60,10 @@
                   </button>
                   </template>
                 </td>
+<<<<<<< HEAD
+=======
+                <td>{{groupe.higroupe}}</td>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 <td>{{groupe.name}}</td>
                 <td>{{groupe.description}}</td>
                 <td>{{groupe.logo}}</td>
@@ -105,6 +113,18 @@
           <div class="modal-body">
             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
               <div class="form-group row">
+<<<<<<< HEAD
+=======
+                <label class="col-md-3 form-control-label" for="text-input">Super Categoria</label>
+                <div class="col-md-9">
+                  <select class="form-control" v-model="higroup_id">
+                    <option value="" >Seleccione Super Categoria</option>
+                    <option v-for="higroupe in arrayHigroupe" :key="higroupe.id" :value="higroupe.id">{{higroupe.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
                 <div class="col-md-9">
                   <input type="text" v-model="name" class="form-control" placeholder="Nombre del groupe">
@@ -151,12 +171,21 @@
     data(){
       return {
         group_id :'',
+<<<<<<< HEAD
+=======
+        higroup_id :'',
+        higroupe :'',
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         name :'',
         description :'',
         logo :'',
         color :'',
         slug :'',
         arrayGroupe : [],
+<<<<<<< HEAD
+=======
+        arrayHigroupe : [],
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         modal : 0,
         tituloModal : '',
         tipoAccion: 0,
@@ -218,6 +247,22 @@
           console.log(error);
         });
       },
+<<<<<<< HEAD
+=======
+      selectHigroupe (){
+
+        let me=this;
+        var url= '/admin/higroupe/select';
+        axios.get(url).then(function (response) {
+          var result= response.data;
+          /*console.log(result);*/
+          me.arrayHigroupe = result.higroupes;
+        })
+        .catch(function (error){
+          console.log(error);
+        });
+      },
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
       changePage(page, search, criteria){
         let me = this;
         //Actualiza la página actual
@@ -233,6 +278,10 @@
 
         let me=this;
         axios.post('/admin/groupe/registrar',{
+<<<<<<< HEAD
+=======
+          'higroup_id' : this.higroup_id,
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
           'name' : this.name,
           'description' : this.description,
           'logo' : this.logo,
@@ -254,6 +303,10 @@
         let me=this;
         axios.put('/admin/groupe/actualizar/'+id,{
           'id' : this.group_id,
+<<<<<<< HEAD
+=======
+          'higroup_id' : this.higroup_id,
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
           'name' : this.name,
           'description' : this.description,
           'logo' : this.logo,
@@ -270,6 +323,10 @@
         this.errorGroupe = 0;
         this.errorMostrarMsjGroupe = [];
 
+<<<<<<< HEAD
+=======
+        /*if (this.higroup_id == null) this.errorMostrarMsjGroupe.push("Seleccione una Super categoría.");*/
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         if (!this.name) this.errorMostrarMsjGroupe.push("El name del groupe no puede estar vacío.");
         if (this.errorMostrarMsjGroupe.length) this.errorGroupe = 1;
 
@@ -381,6 +438,11 @@
       cerrarModal(){
         this.modal = 0;
         this.tituloModal = '';
+<<<<<<< HEAD
+=======
+        this.higroup_id = '';
+        this.higroupe = '';
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         this.name = '';
         this.description = '';
         this.logo = '';
@@ -388,12 +450,21 @@
         this.errorGroupe=0;
       },
       abrirModal (modelo, accion, data =[]){
+<<<<<<< HEAD
+=======
+        this.selectHigroupe();
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         switch(modelo){
           case "groupe":{
             switch(accion){
               case 'registrar':{
                 this.modal = 1;
                 this.tituloModal = 'Registrar grupo';
+<<<<<<< HEAD
+=======
+                this.higroup_id = '';
+                //this.higroupe = '';
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 this.name = '';
                 this.description = '';
                 this.logo = '';
@@ -405,6 +476,11 @@
                 this.modal = 1;
                 this.tituloModal = 'Actualizar grupo';
                 this.group_id = data['id'];
+<<<<<<< HEAD
+=======
+                this.higroup_id = data['higroup_id'];
+                //this.higroupe =  data['higroupe'];
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 this.name = data['name'];
                 this.description = data['description'];
                 this.logo = data['logo'];

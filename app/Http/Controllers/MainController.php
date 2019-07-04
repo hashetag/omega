@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 class MainController extends Product
 {
     
+<<<<<<< HEAD
   public function profile(Request $request)
   {
     $slug = $request->sl.'/'.$request->slug.'/profile';
@@ -26,6 +27,8 @@ class MainController extends Product
     return  view('frontend.profile_empresa')->with(['empresa' => $empresa, 'groupe' => $groupe, 'type' => $type,'city' => $city, 'empSlug' => $empSlug]);
   }
     
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   public function index(Request $request)
   {
     $slug = $request->sl.'/'.$request->slug;

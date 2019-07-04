@@ -2,9 +2,17 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+<<<<<<< HEAD
 Vue.component('groupe', require('./components/Groupe.vue').default);
 Vue.component('type', require('./components/Type.vue').default);
 Vue.component('city', require('./components/City.vue').default);
+=======
+Vue.component('higroupe', require('./components/Higroupe.vue').default);
+Vue.component('groupe', require('./components/Groupe.vue').default);
+Vue.component('type', require('./components/Type.vue').default);
+Vue.component('city', require('./components/City.vue').default);
+Vue.component('role', require('./components/Role.vue').default);
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 Vue.component('empresa', require('./components/Empresa.vue').default);
 Vue.component('user', require('./components/User.vue').default);
 Vue.component('category', require('./components/Category.vue').default);

@@ -15,7 +15,11 @@ class DatabaseSeeder extends Seeder
     User::truncate();
 
     Empresa::create([
+<<<<<<< HEAD
       'isAdmin' => 1,
+=======
+      'role_id' => 1,
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
       'name' => 'WeOnMart',
       'email' => 'weonmart12@gmail.com',
       'password' => bcrypt('Fourmie7'),

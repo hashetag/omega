@@ -35,7 +35,11 @@
 
 @if(Auth::check())
 
+<<<<<<< HEAD
   @if(Auth::guard('empresa')->user()->isAdmin == 0)
+=======
+  @if(Auth::guard('empresa')->user()->role_id == 2)
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 
     <template v-if="menu==20">
       <informacion></informacion>
@@ -49,9 +53,12 @@
     <template v-if="menu==23">
       <product></product>
     </template>
+<<<<<<< HEAD
     <template v-if="menu==0">
       <product></product>
     </template>
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     <template v-if="menu==24">
       <soporte></soporte>
     </template>

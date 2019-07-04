@@ -2,8 +2,12 @@
 <html lang="es">
 
 <head>
+<<<<<<< HEAD
   <base href="http://192.168.100.90/"> 
   <base href="http://weonmart.test/">
+=======
+  <base href="http://weonmart.test/"> 
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,6 +19,7 @@
   <!-- Icons -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="{{ 'css/plantilla.css' }}" rel="stylesheet">
+<<<<<<< HEAD
   <style>
    .dash {
      /* color: #FD5001;*/
@@ -24,6 +29,8 @@
       margin-top: 70px;
     }
   </style>
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
@@ -72,11 +79,19 @@
         
         <meta name="empresa-id" content="{{ Auth::user()->id }}">
        
+<<<<<<< HEAD
         @if(Auth::guard('empresa')->user()->isAdmin == 1)
 
           @include('admin.adminSidebar')
       
         @elseif(Auth::guard('empresa')->user()->isAdmin == 0)
+=======
+        @if(Auth::guard('empresa')->user()->role_id == 1)
+
+          @include('admin.adminSidebar')
+      
+        @elseif(Auth::guard('empresa')->user()->role_id == 2)
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
             
             @include('admin.empresaSidebar')
       

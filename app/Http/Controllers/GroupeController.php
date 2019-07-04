@@ -15,10 +15,20 @@ class GroupeController extends Controller
       $criteria = $request->criteria;
 
       if ($search==''){
+<<<<<<< HEAD
         $groupes = Groupe::all()->orderBy('groupes.id', 'asc')->paginate(20);
       }
       else{
         $groupes = Groupe::all()
+=======
+        $groupes = Groupe::join('higroupes','groupes.higroup_id','=','higroupes.id')
+        ->select('groupes.id', 'groupes.name','groupes.description','groupes.logo','groupes.color','groupes.slug', 'groupes.status','groupes.higroup_id','higroupes.name as higroupe')
+        ->orderBy('groupes.id', 'asc')->paginate(20);
+      }
+      else{
+        $groupes = Groupe::join('higroupes','groupes.higroup_id','=','higroupes.id')
+        ->select('groupes.id', 'groupes.name','groupes.description','groupes.logo','groupes.color','groupes.slug', 'groupes.status','groupes.higroup_id','higroupes.name as higroupe')
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         ->where('groupes.'.$criteria, 'like', '%'. $search . '%')
         ->orderBy('groupes.id', 'asc')->paginate(20);
       }
@@ -48,6 +58,10 @@ class GroupeController extends Controller
   {
     if (!$request->ajax()) return redirect('/');
     $groupe = new Groupe();
+<<<<<<< HEAD
+=======
+    $groupe->higroup_id = $request->higroup_id;
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     $groupe->name = $request->name;
     $groupe->description = $request->description;
     $groupe->logo = $request->logo;
@@ -61,6 +75,10 @@ class GroupeController extends Controller
   {
     if (!$request->ajax()) return redirect('/');
     $groupe = Groupe::findOrFail($request->id);
+<<<<<<< HEAD
+=======
+    $groupe->higroup_id = $request->higroup_id;
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     $groupe->name = $request->name;
     $groupe->description = $request->description;
     $groupe->logo = $request->logo;

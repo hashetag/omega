@@ -18,14 +18,26 @@ class IndexController extends Empresa
   public function index(Request $request)
   {
     $groupes = Groupe::all()->where('status', 1);
+<<<<<<< HEAD
+=======
+    //$empresas = Empresa::all()->where('role_id', 2)->where('status', 1);
+    //return view('frontend.index',compact('groupes', 'empresas'));
+    //return view('frontend.index')->with(['groupes' => $groupes, 'empresas' => $empresas]);
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 
     $empresas = DB::table('empresas')
     ->join('groupes','empresas.groupe_id','=','groupes.id')
     ->join('cities','empresas.city_id','=','cities.id')
     ->join('types','empresas.type_id','=','types.id')
     ->select('groupes.id', 'groupes.slug as sl', 'cities.city as city', 'cities.state as state', 'types.name as type', 'empresas.id', 'empresas.name', 'empresas.avatar', 'empresas.phone', 'empresas.slug', 'empresas.address', 'empresas.openhours')
+<<<<<<< HEAD
     ->where('empresas.isAdmin', 0)->where('empresas.status', 1)->paginate(12);
 
+=======
+    ->where('empresas.role_id', 2)->where('empresas.status', 1)->paginate(12);
+
+    //return [ 'empresas' => $empresas];
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     return view('frontend.index')->with(['groupes' => $groupes, 'empresas' => $empresas]);
   }
   
@@ -50,8 +62,13 @@ class IndexController extends Empresa
     ->join('cities','empresas.city_id','=','cities.id')
     ->join('types','empresas.type_id','=','types.id')
     ->select('groupes.id', 'groupes.slug as sl', 'cities.city as city', 'cities.state as state', 'types.name as type', 'empresas.id', 'empresas.name', 'empresas.avatar', 'empresas.phone', 'empresas.slug', 'empresas.address', 'empresas.openhours')->where('groupe_id', $g_id)
+<<<<<<< HEAD
     ->where('empresas.isAdmin', 0)->where('empresas.status', 1)->paginate(12);
     //$empresas = Empresa::all()->where('groupe_id', $g_id)->where('isAdmin', 0)->where('status', 1);
+=======
+    ->where('empresas.role_id', 2)->where('empresas.status', 1)->paginate(12);
+    //$empresas = Empresa::all()->where('groupe_id', $g_id)->where('role_id', 2)->where('status', 1);
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     return view('frontend.index',compact('groupes', 'empresas'));
   }
 
@@ -64,7 +81,11 @@ class IndexController extends Empresa
    */
   public function show($id)
   {
+<<<<<<< HEAD
     $empresas = Empresa::get()->where('isAdmin', 0)->where('groupe_id', $id)->where('status', 1);
+=======
+    $empresas = Empresa::get()->where('role_id', 2)->where('groupe_id', $id)->where('status', 1);
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     return view('frontend.index',compact('empresas'));
   }
 

@@ -8,6 +8,7 @@
     </p>
     <form action="{{'empresa'}}" method="post" class="form-horizontal">
       <div class="row search-row animated fadeInUp">
+<<<<<<< HEAD
         <div class="col-xl-4 col-sm-4 search-col relative locationicon">
           <i class="icon-location-2 icon-append"></i>
           <input type="text" name="empresa" id="autocomplete-ajax" class="form-control locinput input-rel searchtag-input has-icon" placeholder="Buscar Empresa por nombre..." value="">
@@ -23,6 +24,12 @@
             @endforeach
           </select>
         </div>
+=======
+        <div class="col-xl-8 col-sm-4 search-col relative locationicon">
+          <i class="icon-location-2 icon-append"></i>
+          <input type="text" name="empresa" id="autocomplete-ajax" class="form-control locinput input-rel searchtag-input has-icon" placeholder="Buscar Empresa por nombre..." value="">
+        </div>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         <div class="col-xl-4 col-sm-4 search-col">
           <button class="btn btn-warning btn-search btn-block  btn-gradient"><i class="icon-search"></i><strong>Buscar</strong></button>
         </div>

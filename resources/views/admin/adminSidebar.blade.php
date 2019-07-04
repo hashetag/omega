@@ -31,6 +31,12 @@
       <li @click="menu=6" class="nav-item">
         <a class="nav-link" href="#"><i class="icon-notebook"></i> Ciudad</a>
       </li>
+<<<<<<< HEAD
+=======
+      <li @click="menu=7" class="nav-item">
+          <a class="nav-link" href="#"><i class="icon-user"></i> Role</a>
+      </li>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
       <li @click="menu=8" class="nav-item">
           <a class="nav-link" href="#"><i class="icon-user-following"></i> Reporte Ingreso</a>
       </li>
@@ -56,7 +62,11 @@
 
 @if(Auth::check())
 
+<<<<<<< HEAD
   @if(Auth::guard('empresa')->user()->isAdmin == 1)
+=======
+  @if(Auth::guard('empresa')->user()->role_id == 1)
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 
     <template v-if="menu==0">
       <!-- <ventas></ventas> -->
@@ -83,6 +93,12 @@
     <template v-if="menu==6">
       <city></city>
     </template>
+<<<<<<< HEAD
+=======
+    <template v-if="menu==7">
+      <role></role>
+    </template>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     <template v-if="menu==8">
       <reporte></reporte>
     </template> 

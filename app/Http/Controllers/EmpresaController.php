@@ -17,6 +17,7 @@ class EmpresaController extends Controller
     $criteria = $request->criteria;
 
    if ($search==''){
+<<<<<<< HEAD
       $empresas = Empresa::join('groupes','empresas.groupe_id','=','groupes.id')
       ->join('cities','empresas.city_id','=','cities.id')
       ->join('types','empresas.type_id','=','types.id')
@@ -28,6 +29,21 @@ class EmpresaController extends Controller
       ->join('cities','empresas.city_id','=','cities.id')
       ->join('types','empresas.type_id','=','types.id')
       ->select('empresas.id','empresas.name','empresas.email','empresas.password','empresas.cuit','empresas.avatar','empresas.phone','empresas.address','empresas.openhours','empresas.openhours_2','empresas.minimum','empresas.latitud','empresas.longitud','empresas.slug','empresas.webiste','empresas.status','empresas.isAdmin','empresas.groupe_id','groupes.name as groupe','empresas.city_id','cities.city as city','empresas.type_id','types.name as type')
+=======
+      $empresas = Empresa::join('roles','empresas.role_id','=','roles.id')
+      ->join('groupes','empresas.groupe_id','=','groupes.id')
+      ->join('cities','empresas.city_id','=','cities.id')
+      ->join('types','empresas.type_id','=','types.id')
+      ->select('empresas.id','empresas.name','empresas.email','empresas.password','empresas.cuit','empresas.avatar','empresas.phone','empresas.address','empresas.openhours','empresas.minimum','empresas.latitud','empresas.longitud','empresas.slug','empresas.status','empresas.role_id','roles.name as role','empresas.groupe_id','groupes.name as groupe','empresas.city_id','cities.city as city','empresas.type_id','types.name as type')
+      ->orderBy('empresas.id', 'asc')->paginate(20);
+    }
+    else{
+      $empresas = Empresa::join('roles','empresas.role_id','=','roles.id')
+      ->join('groupes','empresas.groupe_id','=','groupes.id')
+      ->join('cities','empresas.city_id','=','cities.id')
+      ->join('types','empresas.type_id','=','types.id')
+      ->select('empresas.id','empresas.name','empresas.email','empresas.password','empresas.cuit','empresas.avatar','empresas.phone','empresas.address','empresas.openhours','empresas.minimum','empresas.latitud','empresas.longitud','empresas.slug','empresas.status','empresas.role_id','roles.name as role','empresas.groupe_id','groupes.name as groupe','empresas.city_id','cities.city as city','empresas.type_id','types.name as type')
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
       ->where('empresas.'.$criteria, 'like', '%'. $search . '%')
       ->orderBy('empresas.id', 'asc')->paginate(20);
     }
@@ -55,7 +71,11 @@ class EmpresaController extends Controller
   public function select(Request $request)
   { 
     if (!$request->ajax()) return redirect('/');
+<<<<<<< HEAD
     $empresa = Empresa::all()->where('isAdmin', 0)->where('status',1);
+=======
+    $empresa = Empresa::all()->where('role_id',2)->where('status',1);
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     return response()->json(['data' => $empresa], 200);
   }
 
@@ -80,7 +100,11 @@ class EmpresaController extends Controller
     $this->validate($request, $rules);
 
     $empresa = new Empresa();
+<<<<<<< HEAD
     $empresa->isAdmin  = '0';
+=======
+    $empresa->role_id  = '2';
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     $empresa->name     = $request->name;
     $empresa->email    = $request->email;
     $empresa->password = bcrypt( $request->password);
@@ -111,6 +135,7 @@ class EmpresaController extends Controller
     $emp_slug          = str_slug($request->name, "-");
     $empresa->slug     = $gr_slug.'/'.$emp_slug;
     
+<<<<<<< HEAD
     $empresa->cuit        = $request->cuit;
     $empresa->avatar      = $new_avatar;
     $empresa->phone       = $request->phone;
@@ -122,6 +147,17 @@ class EmpresaController extends Controller
     $empresa->longitud    = $request->longitud;
     $empresa->website     = $request->website;
     $empresa->status      = '1';
+=======
+    $empresa->cuit      = $request->cuit;
+    $empresa->avatar    = $new_avatar;
+    $empresa->phone     = $request->phone;
+    $empresa->address   = $request->address;
+    $empresa->openhours = $request->openhours;
+    $empresa->minimum   = $request->minimum;
+    $empresa->latitud   = $request->latitud;
+    $empresa->longitud  = $request->longitud;
+    $empresa->status    = '1';
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     $empresa->save();
     return response()->json(['data', $empresa], 201);
 	}
@@ -154,7 +190,11 @@ class EmpresaController extends Controller
       $empresa->password = bcrypt($request->password);
     }
 
+<<<<<<< HEAD
     $empresa->isAdmin  = 0;
+=======
+    $empresa->role_id  = 2;
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     if (!empty($request->groupe_id)) {
       $empresa->groupe_id = $request->groupe_id;
       $groupe_slug = Groupe::where('id', $request->groupe_id)->first();
@@ -187,6 +227,7 @@ class EmpresaController extends Controller
     $empresa->slug     = $gr_slug.'/'.$emp_slug;
 
 
+<<<<<<< HEAD
     $empresa->cuit        = $request->cuit;
     $empresa->avatar      = $new_avatar;
     $empresa->phone       = $request->phone;
@@ -198,6 +239,17 @@ class EmpresaController extends Controller
     $empresa->longitud    = $request->longitud;
     $empresa->website     = $request->website;
     $empresa->status      = '1';
+=======
+    $empresa->cuit      = $request->cuit;
+    $empresa->avatar    = $new_avatar;
+    $empresa->phone     = $request->phone;
+    $empresa->address   = $request->address;
+    $empresa->openhours = $request->openhours;
+    $empresa->minimum   = $request->minimum;
+    $empresa->latitud   = $request->latitud;
+    $empresa->longitud  = $request->longitud;
+    $empresa->status    = '1';
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     $empresa->save();
 
     return response()->json(['data' => $empresa], 200);

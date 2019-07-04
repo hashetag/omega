@@ -8,8 +8,8 @@
     <div class="container-fluid">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Clientes
-          <button type="button" @click="abrirModal('user', 'registrar')" class="btn btn-secondary" >
+          <i class="fa fa-align-justify"></i> Super Categorías De Empresas
+          <button type="button" @click="abrirModal('higroupe', 'registrar')" class="btn btn-secondary" >
               <i class="icon-plus"></i>&nbsp;Nuevo
           </button>
         </div>
@@ -18,11 +18,11 @@
             <div class="col-md-6">
               <div class="input-group">
                 <select class="form-control col-md-3" v-model="criteria">
-                  <option value="name">Nombre</option>
-                  <option value="email">Email</option>
+                  <option value="name">name</option>
+                  <option value="description">Descripción</option>
                 </select>
-                <input type="text"  v-model="search" @keyup.enter="listarUser(1, search, criteria)" class="form-control" placeholder="Texto a buscar">
-                <button type="submit" @click="listarUser(1, search, criteria)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                <input type="text"  v-model="search" @keyup.enter="listarHigroupe(1, search, criteria)" class="form-control" placeholder="Texto a buscar">
+                <button type="submit" @click="listarHigroupe(1, search, criteria)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
               </div>
             </div>
           </div>
@@ -30,35 +30,36 @@
             <thead>
               <tr>
                 <th>Opciones</th>
-                <th>Numero</th>
                 <th>Nombre</th>
-                <th>Email</th>
+                <th>Descripción</th>
+                <th>URL</th>
                 <th>Estado</th>
                 <th>Eliminar</th>
               </tr>
+              </tr>
             </thead>
             <tbody>
-              <tr v-for="user in arrayUser" :key="user.id">
+              <tr v-for="higroupe in arrayHigroupe" :key="higroupe.id">
                 <td>
-                  <button type="button" @click="abrirModal('user', 'actualizar', user)" class="btn btn-warning btn-sm">
+                  <button type="button" @click="abrirModal('higroupe', 'actualizar', higroupe)" class="btn btn-warning btn-sm">
                     <i class="icon-pencil"></i>
                   </button> &nbsp;
-                  <template v-if="user.status">
-                    <button type="button" class="btn btn-success btn-sm" @click="desactivarUser(user.id)">
+                  <template v-if="higroupe.status">
+                    <button type="button" class="btn btn-success btn-sm" @click="desactivarHigroupe(higroupe.id)">
                     <i class="icon-check"></i>
                   </button>
                   </template>
                   <template v-else>
-                    <button type="button" class="btn btn-danger btn-sm" @click="activarUser(user.id)">
+                    <button type="button" class="btn btn-danger btn-sm" @click="activarCategoria(higroupe.id)">
                     <i class="icon-close"></i>
                   </button>
                   </template>
                 </td>
-                <td>{{user.id}}</td>
-                <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
+                <td>{{higroupe.name}}</td>
+                <td>{{higroupe.description}}</td>
+                <td>{{higroupe.slug}}</td>
                 <td>
-                  <div v-if="user.status">
+                  <div v-if="higroupe.status">
                     <span class="badge badge-success">Activado</span>
                   </div>
                   <div v-else>
@@ -66,7 +67,7 @@
                   </div>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-danger btn-sm" @click="eliminarUser(user.id)">
+                  <button type="button" class="btn btn-danger btn-sm" @click="eliminarHigroupe(higroupe.id)">
                     <i class="icon-trash"></i>
                   </button>
                 </td>
@@ -101,35 +102,29 @@
           <div class="modal-body">
             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
               <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
+                <label class="col-md-3 form-control-label" for="text-input">nombre</label>
                 <div class="col-md-9">
-                  <input type="text" v-model="name" class="form-control" placeholder="Nombre del persona">
+                  <input type="text" v-model="name" class="form-control" placeholder="nombre de categoría">
+                  <span class="help-block">(*) Ingrese el nombre de la super categoría</span>
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input">Email</label>
+                <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
                 <div class="col-md-9">
-                  <input type="text" v-model="email" class="form-control" placeholder="Email">
+                  <input type="text" v-model="description" class="form-control" placeholder="Ingrese descripción">
                 </div>
               </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input">Password</label>
-                <div class="col-md-9">
-                  <input type="password" v-model="password" class="form-control" placeholder="Password">
-                  <span class="text-success">La contraseña debe tener al menos 6 caracteres(*)</span>
-                </div>
-              </div>
-              <div v-show="errorUser" class="form-group">
+              <div v-show="errorHigroupe" class="form-group">
                 <div class="row error text-danger">
-                  <div v-for="error in errorMostrarMsjUser" :key="error">{{error}}</div>
+                  <div v-for="error in errorMostrarMsjHigroupe" :key="error">{{error}}</div>
                 </div>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
-            <button type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarUser()">Guardar</button>
-            <button type="button" v-else class="btn btn-primary" @click="actualizarUser()">Actualizar</button>
+            <button type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarHigroupe()">Guardar</button>
+            <button type="button" v-else class="btn btn-primary" @click="actualizarHigroupe()">Actualizar</button>
           </div>
         </div>
       </div>
@@ -140,16 +135,15 @@
   export default {
     data(){
       return {
-        user_id: 0,
+        higroupe_id :'',
         name :'',
-        email :'',
-        password :'',
-        arrayUser : [],
+        description :'',
+        arrayHigroupe : [],
         modal : 0,
         tituloModal : '',
         tipoAccion: 0,
-        errorUser : 0,
-        errorMostrarMsjUser : [],
+        errorHigroupe : 0,
+        errorMostrarMsjHigroupe : [],
         pagination : {
           'total' : 0,
           'current_page' : 0,
@@ -192,26 +186,15 @@
       }
     },
     methods :{
-      listarUser (page, search, criteria){
-        let me=this;
+      //listarHigroupe (negocio_id){
+      listarHigroupe (page, search, criteria){
 
-        var url= '/admin/user?page=' + page + '&search='+ search + '&criteria='+ criteria;
+        let me=this;
+        var url= '/admin/higroupe?page=' + page + '&search='+ search + '&criteria='+ criteria;
         axios.get(url).then(function (response) {
           var result= response.data;
-          me.arrayUser = result.users.data;
+          me.arrayHigroupe = result.higroupes.data;
           me.pagination= result.pagination;
-        })
-        .catch(function (error){
-          console.log(error);
-        });
-      },
-      selectRole (){
-        let me=this;
-
-        var url= '/admin/role/select';
-        axios.get(url).then(function (response) {
-          var result= response.data;
-          me.arrayRole = result.roles;
         })
         .catch(function (error){
           console.log(error);
@@ -222,73 +205,60 @@
         //Actualiza la página actual
         me.pagination.current_page = page;
         //Envia la petición para visualizar la data de esa página
-        me.listarUser(page, search, criteria);
+        me.listarHigroupe(page, search, criteria);
       },
-      registrarUser (){
+      //registrarHigroupe (negocio_id){
+      registrarHigroupe (){
         
-        if (this.validarUser()) {
+        if (this.validarHigroupe()) {
           return;
         }
 
         let me=this;
-        axios.post('/admin/user/registrar',{
-<<<<<<< HEAD
-=======
-          'role_id' : this.role_id,
->>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
+        axios.post('/admin/higroupe/registrar',{
           'name' : this.name,
-          'email' :this.email,
-          'password' :this.password,
+          'description' : this.description
         }).then(function (response){
           me.cerrarModal();
-          me.listarUser(1, '', 'name');
+          //me.listarHigroupe();
+          me.listarHigroupe(1, '', 'name');
         })
         .catch(function (error){
           console.log(error);
         });
       },
-      actualizarUser (id){
+      actualizarHigroupe (id){
         
-        if (this.validarUser()) {
+        if (this.validarHigroupe()) {
           return;
         }
 
         let me=this;
-        axios.put('/admin/user/actualizar/'+id,{
-          'id' : this.user_id,
-<<<<<<< HEAD
-=======
-          'role_id' : this.role_id,
->>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
+        axios.put('/admin/higroupe/actualizar/'+id,{
+          'id' : this.higroupe_id,
           'name' : this.name,
-          'email' :this.email,
-          'password' :this.password,
+          'description' : this.description
         }).then(function (response){
           me.cerrarModal();
-          me.listarUser(1, '', 'name');
+          //me.listarHigroupe();
+          me.listarHigroupe(1, '', 'name');
         })
         .catch(function (error){
           console.log(error);
         });
       },
-      validarUser(){
-        this.errorUser = 0;
-        this.errorMostrarMsjUser = [];
+      validarHigroupe(){
+        this.errorHigroupe = 0;
+        this.errorMostrarMsjHigroupe = [];
 
-<<<<<<< HEAD
-=======
-        //if (this.role_id==0) this.errorMostrarMsjUser.push("Debe seleccionar un role para el usuario.");
->>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
-        if (!this.name) this.errorMostrarMsjUser.push("El nombre del usuario no puede estar vacío.");
-        if (!this.email) this.errorMostrarMsjUser.push("El email del usuario no puede estar vacío.");
-        if (!this.password) this.errorMostrarMsjUser.push("El password del usuario no puede estar vacío.");
-        if (this.errorMostrarMsjUser.length) this.errorUser = 1;
+        if (!this.name) this.errorMostrarMsjHigroupe.push("El nombre de la Super categoría no puede estar vacío.");
+        if (this.errorMostrarMsjHigroupe.length) this.errorHigroupe = 1;
 
-        return this.errorUser;
+        return this.errorHigroupe;
       },
-      desactivarUser(id){
+      desactivarHigroupe(id){
        swal({
-        title: 'Esta seguro de desactivar esta usuario?',
+        title: 'Esta seguro de desactivar esta super categoría?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -301,10 +271,10 @@
           let me = this;
 
           /*var id = this.id;*/
-          axios.put('/admin/user/desactivar/'+id,{
+          axios.put('/admin/higroupe/desactivar/'+id,{
             /*'id': id*/
           }).then(function (response) {
-            me.listarUser(1, '', 'name');
+            me.listarHigroupe(1, '', 'name');
             swal(
             'Desactivado!',
             'El registro ha sido desactivado con éxito.',
@@ -321,9 +291,9 @@
           }
         }) 
       },
-      activarUser(id){
+      activarCategoria(id){
         swal({
-          title: 'Esta seguro de activar esta usuario?',
+          title: 'Esta seguro de activar esta super categoría?',
           type: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -335,10 +305,10 @@
         if (result.value) {
           let me = this;
 
-          axios.put('/admin/user/activar/'+id,{
+          axios.put('/admin/higroupe/activar/'+id,{
             'id': id
           }).then(function (response) {
-            me.listarUser(1, '', 'name');
+            me.listarHigroupe(1, '', 'name');
             swal(
             'Activado!',
             'El registro ha sido activado con éxito.',
@@ -355,9 +325,9 @@
         }
         }) 
       },      
-      eliminarUser(id){
+      eliminarHigroupe(id){
         swal({
-          title: 'Esta seguro de borrar esta persona?',
+          title: 'Esta seguro de borrar esta super categoría?',
           type: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -369,13 +339,13 @@
         if (result.value) {
           let me = this;
 
-          axios.delete('/admin/user/eliminar/'+id,{
+          axios.delete('/admin/higroupe/eliminar/'+id,{
             'id': id
           }).then(function (response) {
-            me.listarUser(1, '', 'name');
+            me.listarHigroupe(1, '', 'name');
             swal(
             'Eliminado!',
-            'La persona ha sido eliminado con éxito.',
+            'La Super Categoria ha sido eliminado con éxito.',
             'success'
             )
           }).catch(function (error) {
@@ -392,44 +362,29 @@
       cerrarModal(){
         this.modal = 0;
         this.tituloModal = '';
-<<<<<<< HEAD
-=======
-        this.role_id = 0;
->>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
         this.name = '';
-        this.email = '';
-        this.password = '';
-        this.errorUser=0;
+        this.description = '';
+        this.errorHigroupe=0;
+
       },
       abrirModal (modelo, accion, data =[]){
-        this.selectRole();
         switch(modelo){
-          case "user":{
+          case "higroupe":{
             switch(accion){
               case 'registrar':{
                 this.modal = 1;
-                this.tituloModal = 'Registrar Empresa o Usuario';
-<<<<<<< HEAD
-=======
-                this.role_id = 0;
->>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
+                this.tituloModal = 'Registrar Super Categoría';
                 this.name = '';
-                this.email = '';
-                this.password = '';
+                this.description = '';
                 this.tipoAccion = 1;
                 break;
               }
               case 'actualizar':{
                 this.modal = 1;
-                this.tituloModal = 'Actualizar Empresa o Usuario';
-                this.user_id = data['id'];
-<<<<<<< HEAD
-=======
-                this.role_id = data['role_id'];
->>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
+                this.tituloModal = 'Actualizar Super Categoría';
+                this.higroupe_id = data['id'];
                 this.name = data['name'];
-                this.email = data['email'];
-                this.password = data['password'];
+                this.description = data['description'];
                 this.tipoAccion = 2;
                 break;
               }
@@ -439,7 +394,8 @@
       }
     },
     mounted(){
-      this.listarUser(1, this.search, this.criteria);
+      //this.listarHigroupe(negocio_id);
+      this.listarHigroupe(1, this.search, this.criteria);
     }
   }
 </script>

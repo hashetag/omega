@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,11 +17,13 @@ class UserController extends Controller
     $criteria = $request->criteria;
 
     if ($search==''){
-      $users = User::select('users.id','users.name','users.email','users.password','users.status')
+      $users = User::join('roles','users.role_id','=','roles.id')
+      ->select('users.id','users.name','users.email','users.password','users.status','users.role_id','roles.name as role')
       ->orderBy('users.id', 'asc')->paginate(20);
     }
     else{
-      $users = $users = User::select('users.id','users.name','users.email','users.password','users.status')
+      $users = User::join('roles','users.role_id','=','roles.id')
+      ->select('users.id','users.name','users.email','users.password','users.status','users.role_id','roles.name as role')
       ->where('users.'.$criteria, 'like', '%'. $search . '%')
       ->orderBy('users.id', 'asc')->paginate(20);
     }
@@ -38,12 +41,11 @@ class UserController extends Controller
     ]; 
   }
 
-	public function show($slug)
+	public function show(Request $request)
   { 
-    //if (!$request->ajax()) return redirect('/');
-    //$user = User::findOrFail($request->slug);
-    $user = User::where('slug', $slug)->first();
-    return view('profile',compact('user'));
+    if (!$request->ajax()) return redirect('/');
+    $user = User::findOrFail($request->id);
+    return response()->json(['data' => $user], 200);
   }
 
 
@@ -60,21 +62,15 @@ class UserController extends Controller
     $this->validate($request, $rules);
 
     $user = new User();
-<<<<<<< HEAD
-   
-=======
     if (!empty($request->role_id)) {
       $user->role_id = $request->role_id;
     }else{
       $user->role_id = '3';
     }
 
->>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
-    $user->name     = $request->name;
-    $user->email    = $request->email;
-    $user->password = bcrypt( $request->password);
-    $user->avatar   = 'avatar.jpg';
-    $user->slug     = str_slug($request->name, "-");
+    $user->name          = $request->name;
+    $user->email           = $request->email;
+    $user->password        = bcrypt( $request->password);
     //$user->verified            = User::NOT_VERIFIED_USER;
     //$user->verification_token  = User::generateTokenVerification();
     $user->status              = '1';
@@ -112,11 +108,7 @@ class UserController extends Controller
       $user->password = bcrypt($request->password);
     }
 
-<<<<<<< HEAD
-=======
     $user->role_id  = $request->role_id;
->>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
-    $user->slug     = str_slug($request->name, "-");
     $user->status   = '1';
 
     if (!$user->isDirty()) {

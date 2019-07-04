@@ -74,7 +74,11 @@
                       </ul>
                     </aside>
                     <aside class="panel panel-body panel-details">
+<<<<<<< HEAD
                       <h4 class="text-uppercase">DIMENSIONES</h4>
+=======
+                      <h4 class="text-uppercase">DIMENSIONS</h4>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                       <ul>
                         @foreach($sizes as $size)
                           <li> <p class=" no-margin ">Talle : <strong> {{ $size->size }}</strong></p> </li>

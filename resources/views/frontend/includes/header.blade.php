@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
 <head>
+<<<<<<< HEAD
   <base href="http://weonmart.test/"> 
   <!-- <base href="http://192.168.100.90/">  -->
+=======
+  <base href="http://localhost:8000"> 
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="{{ 'classified/img/favicon.png' }}">

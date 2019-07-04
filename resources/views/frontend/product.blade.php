@@ -55,6 +55,7 @@
           </ul>
         </div>
         <div class="menu-overly-mask"></div>
+<<<<<<< HEAD
         <div class="tab-content">
           <div class="tab-pane active " id="alladslist">
             <div class="adds-wrapper row no-margin property-list">
@@ -99,4 +100,50 @@
       </div>
     </div>
   </div>
+=======
+          <div class="tab-content">
+            <div class="tab-pane active " id="alladslist">
+              <div class="adds-wrapper row no-margin property-list">
+                @if (count($products) > 0 )
+                  @foreach ($products as $prod)
+                    <div class="item-list">
+                      <div class="cornerRibbons btn-warning">
+                        <a class="item-price "> <strong>{{ '$'. $prod->price }} </strong></a>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 no-padding photobox">
+                          <div class="add-image"><!-- <span class="photo-count"><i class="fa fa-camera"></i> 2 </span> --> <a href="{{ url($prod->slug) }}"><img class="thumbnail no-margin" src="{{'img_product/'.$prod->picture}}" alt="img" width="150" height="150"></a>
+                          </div>
+                        </div>
+                        <div class="col-md-6 add-desc-box">
+                          <div class="ads-details">
+                            <h5 class="add-title">
+                              <a href="{{ url($prod->slug) }}" class="text-black"> {{ $prod->name }} </a>  
+                            </h5>
+                          </div>
+                        </div>
+                        <div class="col-md-3 text-center  price-box">
+                          <a href="{{ url($prod->slug) }}" class="btn btn-outline-warning"><i class="fa fa-eye"></i> ver producto</a>
+                        </div>  
+                      </div>
+                    </div>
+                  @endforeach
+
+                  @else 
+                    <p class="alert alert-danger save-search-bar text-center">
+                      Oops! No hay Producto en esta categoría 
+                    </p>
+                @endif
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-bar text-center">
+          <nav aria-label="Page navigation " class="d-inline-b">
+            {{ $products->links() }}
+          </nav>
+        </div>
+      </div>
+    </div>
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   @endsection

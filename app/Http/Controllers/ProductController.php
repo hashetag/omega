@@ -46,6 +46,7 @@ class ProductController extends Controller
     //return response()->json(['data' => $bus], 200);
   }
 
+<<<<<<< HEAD
   public function show(Request $request)
   {
     $p_id   = $request->p_id;
@@ -90,17 +91,26 @@ class ProductController extends Controller
   } 
 
   public function select(Request $request)
+=======
+	public function select(Request $request)
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   {
     if (!$request->ajax()) return redirect('/');
     $products = Product::all()->where('status','=',1);
     return ['products' => $products];
   } 
 
+<<<<<<< HEAD
 
 	public function store(Request $request)
   {
     if (!$request->ajax()) return redirect('/');
 
+=======
+	public function store(Request $request)
+  {
+    if (!$request->ajax()) return redirect('/');
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     $product = new Product();
 
     if($request->get('picture'))
@@ -110,7 +120,11 @@ class ProductController extends Controller
       \Image::make($request->get('picture'))->save(public_path('img_product/').$new_picture);
     }
 
+<<<<<<< HEAD
     $product->empresa_id  = $request->emp_id;
+=======
+    $product->empresa_id  = $request->empresa_id;
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     $product->category_id = $request->category_id;
     $product->name        = $request->name;
     $product->description = $request->description;
@@ -129,15 +143,21 @@ class ProductController extends Controller
     //$product->slug        = str_slug($request->name, "-");
     $product->status      = '1';
     $product->save();
+<<<<<<< HEAD
     $insertedId = $product->id;
     return $insertedId;
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
   }
 
   public function update(Request $request)
   {
     if (!$request->ajax()) return redirect('/');
     $product = Product::findOrFail($request->id);
+<<<<<<< HEAD
     $old_picture = $product->picture;
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 
 
     if($request->get('picture')){
@@ -145,20 +165,44 @@ class ProductController extends Controller
       $image = $request->get('picture');
       $new_picture = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
       \Image::make($request->get('picture'))->save(public_path('img_product/').$new_picture);
+<<<<<<< HEAD
     }else{
       $new_picture = $old_picture;
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     }
 
     $categoriesId = Product::where('id', $request->id)->first();
     $catId    = $categoriesId->category_id; 
+<<<<<<< HEAD
+=======
+    //$old_pic  = $categoriesId->picture;
+    //$old_pic  = '1561291191.jpeg';
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
 
     $product->category_id = $request->category_id;
     $product->name        = $request->name;
     $product->description = $request->description;
     $product->code        = $request->code;
+<<<<<<< HEAD
     $product->picture     = $new_picture;
     $product->price       = $request->price;
     $product->discount    = $request->discount;
+=======
+
+    //if ($new_picture !== null) {
+      $product->picture   = $new_picture;
+    //}else{
+     // $product->picture   = '1561291191.jpeg';
+    //}
+    
+    $product->price       = $request->price;
+    if ($request->discount == null) {
+      $product->discount   = 0;
+    }else{
+      $product->discount    = $request->discount;
+    }
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     $product->stock       = $request->stock;
     
     $sl_cat = Category::select('slug')->where('id', $catId)->first();
@@ -190,7 +234,10 @@ class ProductController extends Controller
 
   public function destroy($id)
 	{
+<<<<<<< HEAD
     //if (!$request->ajax()) return redirect('/');
+=======
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
     $b = Product::findOrFail($id);
     $b->delete();
     return response()->json(['data' => $b], 200);

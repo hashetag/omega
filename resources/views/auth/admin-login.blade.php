@@ -17,7 +17,11 @@
 
                   <input id="email" type="email" value="{{old('email')}}" name="email" class="form-control @error('email') is-invalid @enderror" required autocomplete="email" autofocus placeholder="correo electronico">
 
+<<<<<<< HEAD
                   @error('email')<span class="invalid-feedback" role="alert">{{ $message }}</span>@enderror
+=======
+                  @error('email')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</span>@enderror
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
                 </div>
 
                 <div class="form-group mb-4">

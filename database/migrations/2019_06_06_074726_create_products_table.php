@@ -35,7 +35,11 @@ class CreateProductsTable extends Migration
             $table->string('code')->nullable();
             $table->string('picture');
             $table->decimal('price', 11,2);
+<<<<<<< HEAD
             $table->decimal('discount', 11,2)->nullable;
+=======
+            $table->decimal('discount', 11,2);
+>>>>>>> a7f46dba2b390825d66a2b719184eec6042b2b72
             $table->integer('stock');
             $table->string('slug')->unique();
             $table->boolean('status')->default(1);
